@@ -48,9 +48,8 @@ async function getProductById(id: number): Promise< IProductSuccess | IProductEr
     
 }
 
-
 async function createProduct(data: Prisma.ProductCreateInput): Promise< IProductSuccess | IProductError >{
-    let product = await productRepository.createProduct(data);
+    let product = await productRepository.createProduct(data) 
     if (!product){
         return {status: "error", message: "product create error"}
     }

@@ -12,7 +12,6 @@ async function getAllProducts(req:Request, res:Response) {
         res.render('products', {products: context.data, username: res.locals.user.username})
     }
 
-    
     // console.log(res.locals.user)
 }
 

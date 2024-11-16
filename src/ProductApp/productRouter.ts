@@ -17,4 +17,4 @@ router.get('/', authMiddleware ,productControllers.getAllProducts);
 router.get('/:id', productControllers.getProductById); 
 router.get('/:category/createProduct', userRoleMiddleware, productControllers.renderCreateProduct)
 
-export default router;
+export default router

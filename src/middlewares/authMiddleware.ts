@@ -12,6 +12,8 @@ export function authMiddleware(req: Request, res: Response, next: NextFunction){
         next()
     } else {
         res.sendStatus(401)
+        res.status(401).json({ message: 'Error message here authMiddleware.ts' })
     }
 }
+
 

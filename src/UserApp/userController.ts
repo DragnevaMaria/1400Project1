@@ -12,6 +12,7 @@ function registration(req: Request, res: Response){
 }
 
 async function authUser(req: Request, res: Response){
+    
     // console.log(req.body)
     // // метод cookie отправляет специальный заголовок Set-Cookie
     // res.cookie('user', req.body.email)
@@ -24,10 +25,11 @@ async function authUser(req: Request, res: Response){
         res.send(user.message)
         return 
     }
-
-    const token = sign(user.data, SECRET_KEY, {expiresIn: '1h'})
+    const token = sign(user.data, SECRET_KEY, {expiresIn: '999d'})
+    console.log('New Token:', token)
     res.cookie('token', token)
-    res.sendStatus(200)
+    // res.sendStatus(200)
+    res.status(200).json({ message: 'Authenticated successfully (userController)', token })
 }
 
 async function registerUser(req: Request, res: Response){
@@ -37,12 +39,12 @@ async function registerUser(req: Request, res: Response){
         res.send(result.message)
         return
     }
-    const token = sign(result.data, SECRET_KEY, {expiresIn: '1h'})
+    const token = sign(result.data, SECRET_KEY, {expiresIn: '999d'})
+    console.log('New Token:', token)
     res.cookie('token', token)
-    res.sendStatus(200)
+    // res.sendStatus(200)
+    res.status(200).json({ message: 'Registration successful', token })
 }
-
-
 
 const userController = {
     login: login,

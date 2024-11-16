@@ -12,7 +12,7 @@ async function findUserByEmail(email: string){
 
         return user;
     } catch(error){
-        console.log(error);
+        console.log(error)
     }
 }
 
@@ -21,9 +21,9 @@ async function createUser(data: Prisma.UserCreateInput){
         const user = await client.user.create({
             data: data
         })
-        return user;
+        return user
     }catch(error){
-        console.log(error);
+        console.error("Error creating user:", error)
     }
     //     ☆*: .｡. o(≧▽≦)o .｡.:*☆
 }
@@ -32,4 +32,4 @@ const userRepository = {
     createUser: createUser,
 }
 
-export default userRepository;
+export default userRepository

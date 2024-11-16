@@ -65,12 +65,28 @@ async function createOneUser(){
     })
 }
 
-// async function 
 
-createOneUser().then(() => {
+async function createUser() {
+    const newUser = await prisma.user.create({
+      data: {
+        id: 4,
+        username: "Maria",
+        email: "dragnevamasa95@gmail.com",
+        password: "123",
+        role: "admin",
+      },
+    });
+    console.log(newUser)
+  }
+
+async function seeds() {
+    await createOneUser()
+    await createUser()
+}
+
+seeds().then(() => {
     prisma.$disconnect()
-}).catch(err => {
-    console.error(err);
+}).catch((err) => {
+    console.log(err)
     prisma.$disconnect()
 })
-
